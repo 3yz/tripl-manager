@@ -125,7 +125,7 @@
       <div class="row-fluid">
         <div class="row-fluid">
           <style type="text/css">
-            body { background: url(<?php echo URL::base(true); ?>/assets/img/bg-login.jpg) !important; }
+            body { background: url(<?php echo URL::base(true); ?>/assets/img/bg-login-3yz.jpg) !important; }
           </style>
           <?php echo $content ?>
         </div>
