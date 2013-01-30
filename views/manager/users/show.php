@@ -1,45 +1,29 @@
-<div class="navigation">
-  <ul class='clearfix'>
-    <li><?php echo Html::anchor('manager', 'Dashboard') ?></li>
-    <li><?php echo Html::anchor('manager/news', 'Notícias') ?></li>
-    <li class='active'><?php echo Html::anchor('manager/news/show/'.$news->id, $news->title) ?></li>
+<div>
+  <hr>
+  <ul class="breadcrumb">
+    <li>
+      <a href="<?php echo URL::base(true) . 'manager' ?>">Home</a> <span class="divider">/</span>
+    </li>
+    <li>
+      <a href="<?php echo URL::base(true) . 'manager/users' ?>">Usuários</a>
+    </li>
   </ul>
+  <hr>
 </div>
 
-<section>
-  <header>
-    <div class="control">
-      <?php echo Html::anchor('manager/news/edit/'.$news->id, Html::image('assets/imgs/edit.png') . ' Editar', array('class' => 'edit button')) ?>
-      <?php echo Html::anchor('manager/news/delete/'.$news->id, Html::image('assets/imgs/cross.png') . ' Excluir', array('class' => 'delete button')) ?>
+<?php echo View::factory('manager/templates/notices')->set('messages', Notices::get()) ?>
+
+<div class="row-fluid">    
+  <div class="box span12">
+    <div class="box-header" data-original-title>
+      <h2><i class="icon-user"></i><span class="break"></span>Visualização</h2>
     </div>
-    <h2>Visualizar notícia</h2>
-  </header>
-  
-  <?php echo Notice::render() ?>
-  
-  <div class="fieldset">
-    <h4>Notícia</h4>
-    
-    <div class="field ">
-      <p class="label">Publicar em</p>
-      <div class="value"><?php echo $news->published_at() ?></div>
-    </div>
-    
-    <div class="field">
-      <p class="label">Título</p>
-      <div class="value"><?php echo $news->title ?></div>
-    </div>
-    
-    <div class="field">
-      <p class="label">Conteúdo</p>
-      <div class="value"><?php echo $news->content ?></div>
-    </div>
-    
-    <div class="field">
-      <p class="label">Autor</p>
-      <div class="value"><?php echo Html::anchor('manager/users/show/'.$news->user->id, $news->user->name) ?></div>
-    </div>
-    
-  </div>
-  
-</section>
+    <div class="box-content">
+      <dl>
+        <dt>Nome</dt>
+        <dd><?php echo $user->name; ?></dd>
+      </dl>            
+    </div>         
+  </div><!--/span-->
+
+</div><!--/row-->
