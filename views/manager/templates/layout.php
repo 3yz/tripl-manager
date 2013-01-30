@@ -38,7 +38,7 @@
         <li class="li6"></li>
       </ul>
     </div>  
-    
+    <?php if(Auth::instance()->logged_in(array('manager')) || Auth::instance()->logged_in(array('admin'))): ?>
     <!-- start: Header -->
     <div class="navbar">
       <div class="navbar-inner">
@@ -79,21 +79,22 @@
       </div>
     </div>
     <!-- start: Header -->
+    <?php endif; ?>
   
+    
     <div class="container-fluid">
-      <div class="row-fluid">
-        <?php if(Auth::instance()->logged_in(array('manager')) || Auth::instance()->logged_in(array('admin'))): ?>
+      <?php if(Auth::instance()->logged_in(array('manager')) || Auth::instance()->logged_in(array('admin'))): ?>
+      <div class="row-fluid">        
         <!-- start: Main Menu -->
         <div class="span2 main-menu-span">
           <div class="nav-collapse sidebar-nav">
             <?php echo View::factory('manager/templates/_menu'); ?>            
           </div><!--/.well -->
         </div><!--/span-->
-        <!-- end: Main Menu -->
-        <?php endif; ?>
+        <!-- end: Main Menu -->        
 
         <!-- start: Content -->
-        <div id="content" class="<?php echo Auth::instance()->logged_in() ? 'span10' : 'span12' ?>">
+        <div id="content" class="span10">
           <?php echo $content ?>
         </div><!--/#content.span10-->
         <hr>
@@ -120,6 +121,16 @@
           <span style="text-align:left;float:right">&copy; <a href="http://3yz.com" target="_blank">3yz</a> - <?php echo date('Y') ?></span>
         </p>
       </footer>
+      <?php else: ?>
+      <div class="row-fluid">
+        <div class="row-fluid">
+          <style type="text/css">
+            body { background: url(<?php echo URL::base(true); ?>/assets/img/bg-login.jpg) !important; }
+          </style>
+          <?php echo $content ?>
+        </div>
+      </div>
+      <?php endif; ?>
     </div><!--/.fluid-container-->
 
     <!-- start: JavaScript-->

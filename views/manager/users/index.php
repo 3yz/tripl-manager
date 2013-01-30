@@ -2,10 +2,10 @@
   <hr>
   <ul class="breadcrumb">
     <li>
-      <a href="#">Home</a> <span class="divider">/</span>
+      <a href="<?php echo URL::base(true) . 'manager'; ?>">Home</a> <span class="divider">/</span>
     </li>
     <li>
-      <a href="#">Usuários</a>
+      <a href="<?php echo URL::base(true) . 'manager/users'; ?>">Usuários</a>
     </li>
   </ul>
   <hr>
