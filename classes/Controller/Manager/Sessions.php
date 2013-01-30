@@ -17,7 +17,7 @@ class Controller_Manager_Sessions extends Controller_Manager_Application {
       if(Auth::instance()->login($this->request->post('username'), $this->request->post('password'))){
         $this->redirect('manager');
       } else {
-        //Notice::add(Notice::ERROR, 'Usuário e/ou senha inválidos');
+        Notices::add('error', 'Usuário e/ou senha inválidos');
       }
     }
     
