@@ -17,6 +17,7 @@
     <link href="<?php echo URL::base(TRUE) ?>assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link id="base-style" href="<?php echo URL::base(TRUE) ?>assets/css/style.css" rel="stylesheet">
     <link id="base-style-responsive" href="<?php echo URL::base(TRUE) ?>assets/css/style-responsive.css" rel="stylesheet">
+    <base href="<?php echo URL::base(TRUE) ?>" />
     <!-- end: CSS -->
 
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -147,7 +148,7 @@
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.flot.resize.min.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.chosen.min.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.uniform.min.js"></script>
-    <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.cleditor.min.js"></script>
+    <script src="<?php echo URL::base(TRUE) ?>assets/js/tiny_mce/jquery.tinymce.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.noty.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.elfinder.min.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.raty.min.js"></script>
