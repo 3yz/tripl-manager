@@ -65,7 +65,9 @@
                   <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="#"><i class="icon-user"></i> Perfil</a></li>
+                  <li>
+                    <?php echo HTML::anchor('manager/users/profile', '<i class="icon-user"></i> Perfil') ?>
+                  </li>
                   <li>
                     <?php echo HTML::anchor('manager/logout', '<i class="icon-off"></i> Sair') ?>
                   </li>
