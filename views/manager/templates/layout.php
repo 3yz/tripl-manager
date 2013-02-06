@@ -30,14 +30,9 @@
 
   <body>
     <div id="overlay">
-      <ul>
-        <li class="li1"></li>
-        <li class="li2"></li>
-        <li class="li3"></li>
-        <li class="li4"></li>
-        <li class="li5"></li>
-        <li class="li6"></li>
-      </ul>
+      <div class="loader">
+        <?php echo HTML::image('assets/img/progress2.gif'); ?>
+      </div>
     </div>  
     <?php if(Auth::instance()->logged_in(array('manager')) || Auth::instance()->logged_in(array('admin'))): ?>
     <!-- start: Header -->
