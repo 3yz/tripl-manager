@@ -1,13 +1,9 @@
 <div class="login-box">
-  <div class="icons">
-    <br/>
-  </div>
-  <h2>Login</h2>
   <?php echo Form::open('manager/login', array('class' => 'form-horizontal')) ?>
     <fieldset>
-      <div class="offset1 span10">
-        <?php echo View::factory('manager/templates/notices')->set('messages', Notices::get()) ?>    
-      </div>
+      
+      <?php echo View::factory('manager/templates/notices')->set('messages', Notices::get()) ?>    
+
       <div class="input-prepend" title="Username">
         <span class="add-on"><i class="icon-user"></i></span>
         <?php echo Form::input('username', null, array('id' => 'user_username', 'class' => 'input-large span10', 'placeholder' => 'E-mail ou Usuário')) ?>
@@ -27,9 +23,4 @@
       </div>
       <div class="clearfix"></div>
   <?php echo Form::close() ?>
-  <hr>
-  <!-- <h3>Forgot Password?</h3>
-  <p>
-    No problem, <a href="#">click here</a> to get a new password.
-  </p>   -->
 </div><!--/span-->
