@@ -101,10 +101,10 @@
       <div class="modal hide fade" id="delete-modal">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">×</button>
-          <h3>Remover Usuário</h3>
+          <h3>Apagar</h3>
         </div>
         <div class="modal-body">
-          <p>Deseja realmente remover esse usuário?</p>
+          <p>Deseja realmente excluir esse registro?</p>
         </div>
         <div class="modal-footer">
           <a href="#" class="btn" data-dismiss="modal">Fechar</a>
