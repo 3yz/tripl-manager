@@ -25,7 +25,6 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- <link rel="shortcut icon" href="<?php echo URL::base(TRUE) ?>assets/img/favicon.ico"> -->
   </head>
 
   <body>
@@ -132,9 +131,11 @@
     </div><!--/.fluid-container-->
 
     <!-- start: JavaScript-->
-    <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery-1.7.2.min.js"></script>
-    <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery-ui-1.8.21.custom.min.js"></script>
-    <script src="<?php echo URL::base(TRUE) ?>assets/js/bootstrap.js"></script>
+    <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery-1.9.1.min.js"></script>
+    <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery-migrate-1.0.0.min.js"></script>
+    <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.ui.touch-punch.js"></script>
+    <script src="<?php echo URL::base(TRUE) ?>assets/js/bootstrap.min.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.cookie.js"></script>
     <script src='<?php echo URL::base(TRUE) ?>assets/js/fullcalendar.min.js'></script>
     <script src='<?php echo URL::base(TRUE) ?>assets/js/jquery.dataTables.min.js'></script>
@@ -157,7 +158,6 @@
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.knob.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.sparkline.min.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/custom.js"></script>
-    <!-- end: JavaScript-->
     
   </body>
 </html>

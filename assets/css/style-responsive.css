@@ -25,6 +25,23 @@
 		padding-bottom: 1px;
 	}
 	
+	.sidebar-nav > ul > li > ul {
+		margin: 0px;
+		padding: 5px 0px 5px 25px;
+		background: rgba(0,0,0,.45);
+		list-style: none;
+		display: none;
+	}
+	
+	.sidebar-nav > ul > li > ul > li {
+		padding: 5px 0px 5px 0px;
+	}
+	
+	.sidebar-nav > ul > li > ul > li > a:hover {
+		color: #fff;
+		text-decoration: none;
+	}
+	
 	.nav-tabs.nav-stacked > li > a {
 	  	margin: 1px 0px 0px 0px;
 		padding-left: 20px;
@@ -124,13 +141,30 @@
 
 	}
 	
-	.sidebar-nav > ul{
+	.sidebar-nav > ul {
 		margin: 20px 0px 0px -20px;
 		border-top: 1px solid #0a0c0e !important;
 	  	border-bottom: 1px solid #212121 !important;
 		border-left: none;
 		border-right: none;
 		padding-bottom: 1px;
+	}
+	
+	.sidebar-nav > ul > li > ul {
+		margin: 0px;
+		padding: 5px 0px 5px 25px;
+		background: rgba(0,0,0,.45);
+		list-style: none;
+		display: none;
+	}
+	
+	.sidebar-nav > ul > li > ul > li {
+		padding: 5px 0px 5px 0px;
+	}
+	
+	.sidebar-nav > ul > li > ul > li > a:hover {
+		color: #fff;
+		text-decoration: none;
 	}
 	
 	.nav-tabs.nav-stacked > li > a {
@@ -265,6 +299,23 @@
 		border-left: none;
 		border-right: none;
 		padding-bottom: 1px;
+	}
+	
+	.sidebar-nav > ul > li > ul {
+		margin: 0px;
+		padding: 0px 0px 0px 20px;
+		background: rgba(0,0,0,.45);
+		list-style: none;
+		display: none;
+	}
+	
+	.sidebar-nav > ul > li > ul > li {
+		padding: 5px 0px 5px 0px;
+	}
+	
+	.sidebar-nav > ul > li > ul > li > a:hover {
+		color: #fff;
+		text-decoration: none;
 	}
 	
 	.nav-tabs.nav-stacked > li > a {
