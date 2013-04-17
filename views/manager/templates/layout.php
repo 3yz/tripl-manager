@@ -135,6 +135,7 @@
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery-migrate-1.0.0.min.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery-ui-1.10.0.custom.min.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.ui.touch-punch.js"></script>
+    <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery-ui-timepicker-addon.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/bootstrap.min.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.cookie.js"></script>
     <script src='<?php echo URL::base(TRUE) ?>assets/js/fullcalendar.min.js'></script>
