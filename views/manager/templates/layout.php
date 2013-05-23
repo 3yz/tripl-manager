@@ -25,6 +25,7 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <!--[if IE]><!--> <style>#overlay { display:none;}</style> <!--<![endif]-->
   </head>
 
   <body>
@@ -157,7 +158,7 @@
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.imagesloaded.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.masonry.min.js"></script>
     <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.knob.js"></script>
-    <script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.sparkline.min.js"></script>
+    <!--script src="<?php echo URL::base(TRUE) ?>assets/js/jquery.sparkline.min.js"></script-->
     <script src="<?php echo URL::base(TRUE) ?>assets/js/custom.js"></script>
     
   </body>

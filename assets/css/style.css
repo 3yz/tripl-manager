@@ -441,7 +441,7 @@ a.brand span {
   	background-image: -webkit-linear-gradient(top, #fafafa, #efefef);
   	background-image: -o-linear-gradient(top, #fafafa, #efefef);
   	background-image: linear-gradient(to bottom, #fafafa, #efefef);
-  	filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fafafa', endColorstr='#efefef', GradientType=0);
+  	/*filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fafafa', endColorstr='#efefef', GradientType=0);*/
   	-webkit-border-radius: 2px;
        -moz-border-radius: 2px;
           	border-radius: 2px;

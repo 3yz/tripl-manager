@@ -57,7 +57,7 @@ $(document).ready(function(){
 	$("#overlay").delay(1250).fadeOut(500);
 	template_functions();
 	init_masonry();
-	sparkline_charts();
+	//sparkline_charts();
 	charts();
 	calendars();
 	growlLikeNotifications();
