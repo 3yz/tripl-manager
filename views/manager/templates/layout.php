@@ -114,11 +114,11 @@
     
       <div class="clearfix"></div>
     
-      <footer>
+      <!--<footer>
         <p>
           <span style="text-align:left;float:right">&copy; <a href="http://3yz.com" target="_blank">3yz</a> - <?php echo date('Y') ?></span>
         </p>
-      </footer>
+      </footer>-->
       <?php else: ?>
       <div class="row-fluid">
         <div class="row-fluid">
