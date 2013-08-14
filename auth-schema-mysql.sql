@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS roles;
+
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
@@ -6,14 +8,20 @@ CREATE TABLE IF NOT EXISTS `roles` (
 ) DEFAULT CHARSET=utf8;
 
 INSERT INTO `roles` (`id`, `name`, `description`) VALUES(1, 'login', 'Login');
+
 INSERT INTO `roles` (`id`, `name`, `description`) VALUES(2, 'manager', 'Manager');
+
 INSERT INTO `roles` (`id`, `name`, `description`) VALUES(3, 'admin', 'Administrador');
+
+DROP TABLE IF EXISTS roles_users;
 
 CREATE TABLE IF NOT EXISTS `roles_users` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `role_id` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY  (`user_id`,`role_id`)
 ) DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -26,6 +34,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY  (`id`)
 ) DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS user_tokens;
+
 CREATE TABLE IF NOT EXISTS `user_tokens` (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` int(11) UNSIGNED NOT NULL,
@@ -34,4 +44,4 @@ CREATE TABLE IF NOT EXISTS `user_tokens` (
   `created` int(10) UNSIGNED NOT NULL,
   `expires` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) DEFAULT CHARSET=utf8;
