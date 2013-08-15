@@ -25,3 +25,12 @@ Create a admin user to access the manager:
 **4nd step**
 
 Head to the manager url http://websiteurl.com/manager and use the credentials to grant permission to the system.
+
+Tasks
+-----
+
+**CRUD**
+
+Generate a basic start CRUD to a model
+
+  ./minion admin:crud --singular='Contato' --plural='Contatos' --model='Contact'
