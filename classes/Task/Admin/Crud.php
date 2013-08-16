@@ -111,6 +111,7 @@ class Task_Admin_Crud extends Minion_Task {
     $model = ORM::factory($options['model']);
     $columns = $model->table_columns();
     $labels = $model->labels();
+    $belongs_to = $model->belongs_to();
     foreach($columns as $field => $column_options){
       if($field != 'id') {
         $label = (array_key_exists($field, $labels)) ? $labels[$field] : ucfirst($field);
@@ -118,7 +119,7 @@ class Task_Admin_Crud extends Minion_Task {
         $content = str_replace('{model_singular}', $this->model_singular, $content);
         $content = str_replace('{label}', $label, $content);
         $content = str_replace('{message}', $this->build_message($field, $column_options), $content);
-        $content = str_replace('{field}', $this->build_field($field, $column_options), $content);
+        $content = str_replace('{field}', $this->build_field($field, $column_options, $belongs_to), $content);
 
         $new_content.= $content;
       }
@@ -143,17 +144,29 @@ class Task_Admin_Crud extends Minion_Task {
     );
   }
 
-  private function build_field($field, $column_options)
+  private function build_field($field, $column_options, $belongs_to)
   {
     $id = $this->model_singular.'_'.$field;
-    $class = array('input-xxlarge');
-    $options = "array('id' => '%s', 'class' => '%s')";
+    $class = array('input-xxlarge');    
+    $type = NULL;
 
     switch($column_options['data_type']){
     case 'text':
     case 'mediumtext':
     case 'longtext':
       $field_html = '<?php echo Form::textarea(\'%s\', $obj->%s, %s); ?>';
+
+      break;
+    case 'int':
+      if(substr($field, -3) == '_id') {
+        $related_model = $belongs_to[substr($field, 0, -3)]['model'];
+        $class = array('input-large');
+        $field_html = '<?php echo Form::select_from_model(\'%s\', \''.$related_model.'\', array(\'empty\' => \'selecione\', \'text\' => \'id\'), $obj->%s, %s); ?>';
+      } else {
+        $type = 'number';
+        $class = array('input-medium');
+        $field_html = '<?php echo Form::input(\'%s\', $obj->%s, %s); ?>';
+      }
 
       break;
     case 'date' : 
@@ -170,15 +183,23 @@ class Task_Admin_Crud extends Minion_Task {
       $field_html = '<?php echo Form::input(\'%s\', $obj->%s, %s); ?>';
     }
 
+    $options = array('id' => $id, 'class' => $class);
+    if(!is_null($type)) {
+      $options['type'] = $type;
+    }
+
+    $opt = 'array(';
+    foreach($options as $key => $value) {
+      $value = (is_array($value)) ? implode(' ', $value) : $value;
+      $opt.= "'$key' => '$value',";
+    }
+    $opt.=')';
+
     return sprintf(
       $field_html,
       $field,
       $field,
-      sprintf(
-        $options,
-        $id,
-        implode(' ', $class)
-      )
+      $opt      
     );
 
   }
