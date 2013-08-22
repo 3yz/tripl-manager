@@ -108,4 +108,4 @@ class Controller_Manager_{model_u_plural} extends Controller_Manager_Application
     $this->redirect('manager/{model_plural}');
   }
 
-} // End Manager users
+} 
