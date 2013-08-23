@@ -122,7 +122,7 @@ class Task_Admin_Crud extends Minion_Task {
       $field = trim($field);
       $label = (array_key_exists($field, $labels)) ? $labels[$field] : ucfirst($field);
       $list_labels.= "<th>".$label."</th>\n";
-      $list_fields.= '<th><?php echo $obj->'.$field.'; ?></th>'."\n";
+      $list_fields.= '<td><?php echo $obj->'.$field.'; ?></td>'."\n";
     }
 
     $list = str_replace('{fields}', $list_fields, $list);
