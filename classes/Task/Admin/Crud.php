@@ -39,15 +39,9 @@ class Task_Admin_Crud extends Minion_Task {
     $this->controller_path = APPPATH . 'classes/Controller/';
 
     $this->create_dirs($options);    
-
     $this->copy_files($options);
-
     $this->build_form($options);
-
-    // if(!method_exists($this, $options['method'])){
-    //   return Minion_CLI::write('Método inválido!');
-    // }
-    // $this->$options['method']($options);
+    $this->build_menu($options);
 
   }
 
@@ -128,6 +122,41 @@ class Task_Admin_Crud extends Minion_Task {
     $form = str_replace('{fields}', $new_content, $form);
     file_put_contents($this->view_path.'manager/'.$this->model_plural.'/_form.php', $form);
 
+  }
+
+  protected function build_menu($options)
+  {
+    Minion_CLI::write('Adding the new CRUD to the menu.');
+    if(!file_exists($this->view_path.'manager/templates')) {
+      Minion_CLI::write('- Creating directory structure');
+      mkdir($this->view_path.'manager/templates');
+    } 
+    if(!file_exists($this->view_path.'manager/templates/_menu.php')) {
+      Minion_CLI::write('- Creating menu partial');
+      copy(MODPATH.'tripl-manager/views/manager/templates/_menu.php', $this->view_path . 'manager/templates/_menu.php');
+    } 
+
+    $menu = file_get_contents($this->view_path.'manager/templates/_menu.php');
+
+    $menu_delimiter = '<!--|new_content|-->';
+    $new_menu = '
+  <li <?php if (Request::current()->controller() == \'%s\'): ?>class="active"<?php endif ?>>
+    <?php echo HTML::anchor(\'manager/%s\', \'<i class="icon-cog icon-white"></i> %s</span>\') ?>
+  </li>';
+
+    $menu = str_replace(
+      '<!--|new_content|-->', 
+      sprintf(
+        $new_menu,
+        $this->model_plural,
+        $this->model_plural,
+        $this->plural
+      )
+      ."\n".$menu_delimiter, 
+      $menu
+    );
+
+    file_put_contents($this->view_path.'manager/templates/_menu.php', $menu);P
   }
 
   private function build_message($field, $column_options)
@@ -221,21 +250,5 @@ class Task_Admin_Crud extends Minion_Task {
     }
     file_put_contents($path, $file);
   }
-
-  // protected function generate(array $options)
-  // {
-  //   $sql = file_get_contents(DOCROOT. 'modules/tripl-manager/auth-schema-mysql.sql');
-  //   $queries = explode("\n\n", $sql);
-
-  //   try {
-  //     foreach($queries as $query) {
-  //       $result = DB::query(NULL, $query)->execute();  
-  //     }  
-  //     return Minion_CLI::write('Tabelas de administração criadas com sucesso!'); 
-  //   } catch(\Exception $e) {
-  //     return Minion_CLI::write('Erro! Houve um problema ao gerar as tabelas'); 
-  //   }
-
-  // }
 
 }
