@@ -1,5 +1,19 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
+ 
+/**
+ * CRUD generator task
+ * 
+ * It requires the follow params:
+ *  - singular: the singular name (to the forms and lists)
+ *  - plural: the plural name (to the forms and lists)
+ *  - model: name of the model to build the CRUD
+ *
+ * Optional params:
+ *  - avoid_fields: Fields to be avoid in the generated form
+ *    Ex: --avoid_fields='id, test, created_at' //must be comma separeted   
+ *    Default values: 'id, slug, created_at, updated_at'
+ */
 class Task_Admin_Crud extends Minion_Task {
 
   protected $model = NULL,
@@ -16,6 +30,7 @@ class Task_Admin_Crud extends Minion_Task {
     'singular' => NULL,
     'plural'   => NULL,
     'model'    => NULL,
+    'avoid_fields' => 'id, slug, created_at, updated_at'
   );
 
   public function build_validation(Validation $validation)
@@ -106,8 +121,12 @@ class Task_Admin_Crud extends Minion_Task {
     $columns = $model->table_columns();
     $labels = $model->labels();
     $belongs_to = $model->belongs_to();
+    $avoid_fields = explode(',', $options['avoid_fields']);
+    foreach($avoid_fields as $key => $avoid_field){
+      $avoid_fields[$key] = trim($avoid_field);
+    }
     foreach($columns as $field => $column_options){
-      if($field != 'id') {
+      if(!in_array($field, $avoid_fields)) {
         $label = (array_key_exists($field, $labels)) ? $labels[$field] : ucfirst($field);
         $content = str_replace('{field_name}', $field, $container);
         $content = str_replace('{model_singular}', $this->model_singular, $content);
@@ -156,7 +175,7 @@ class Task_Admin_Crud extends Minion_Task {
       $menu
     );
 
-    file_put_contents($this->view_path.'manager/templates/_menu.php', $menu);P
+    file_put_contents($this->view_path.'manager/templates/_menu.php', $menu);
   }
 
   private function build_message($field, $column_options)
