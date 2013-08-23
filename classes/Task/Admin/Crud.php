@@ -197,7 +197,7 @@ class Task_Admin_Crud extends Minion_Task {
       '<!--|new_content|-->', 
       sprintf(
         $new_menu,
-        $this->model_plural,
+        $this->model_u_plural,
         $this->model_plural,
         $this->plural
       )
