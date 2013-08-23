@@ -24,14 +24,14 @@
       <table class="table table-striped table-bordered bootstrap-datatable datatable">
         <thead>
           <tr>
-            <th>ID</th>            
+            {fields_labels}
             <th class="actions">Ações</th>
           </tr>
         </thead>   
         <tbody>
         <?php foreach($collection as $obj): ?>
           <tr>
-            <td><?php echo $obj->id; ?></td>
+            {fields}
             <td class="actions">
               <a class="btn" href="<?php echo URL::base(true) . 'manager/{model_plural}/edit/' . $obj->id; ?>">
                 <i class="icon-edit icon-black"></i>  

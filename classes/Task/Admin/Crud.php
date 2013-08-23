@@ -12,7 +12,10 @@
  * Optional params:
  *  - avoid_fields: Fields to be avoid in the generated form
  *    Ex: --avoid_fields='id, test, created_at' //must be comma separeted   
- *    Default values: 'id, slug, created_at, updated_at'
+ *    Default value: 'id, slug, created_at, updated_at'
+ *  - list_fields: Fields to add to the generated list
+ *    Ex: --list_fields='id, title' //must be comma separeted   
+ *    Default value: 'id'
  */
 class Task_Admin_Crud extends Minion_Task {
 
@@ -30,6 +33,7 @@ class Task_Admin_Crud extends Minion_Task {
     'singular' => NULL,
     'plural'   => NULL,
     'model'    => NULL,
+    'list_fields' => 'id',
     'avoid_fields' => 'id, slug, created_at, updated_at'
   );
 
@@ -38,7 +42,8 @@ class Task_Admin_Crud extends Minion_Task {
     return parent::build_validation($validation)
       ->rule('singular', 'not_empty')
       ->rule('plural', 'not_empty')
-      ->rule('model', 'not_empty');
+      ->rule('model', 'not_empty')
+      ->rule('list_fields', 'not_empty');
   }
 
   protected function _execute(array $options)
@@ -55,6 +60,7 @@ class Task_Admin_Crud extends Minion_Task {
 
     $this->create_dirs($options);    
     $this->copy_files($options);
+    $this->build_list($options);
     $this->build_form($options);
     $this->build_menu($options);
 
@@ -99,6 +105,30 @@ class Task_Admin_Crud extends Minion_Task {
         $this->replace_content($this->view_path.'manager/'.$this->model_plural.'/'.$entry, $options);
       }
     }
+  }
+
+  protected function build_list($options)
+  {
+    $list = file_get_contents($this->view_path.'manager/'.$this->model_plural.'/index.php');
+
+    $list_labels = '';
+    $list_fields = '';
+
+    $model = ORM::factory($options['model']);
+    $columns = $model->table_columns();
+    $labels = $model->labels();
+
+    foreach(explode(',',$options['list_fields']) as $field){
+      $field = trim($field);
+      $label = (array_key_exists($field, $labels)) ? $labels[$field] : ucfirst($field);
+      $list_labels.= "<th>".$label."</th>\n";
+      $list_fields.= '<th>$obj->'.$field.'</th>'."\n";
+    }
+
+    $list = str_replace('{fields}', $list_fields, $list);
+    $list = str_replace('{fields_labels}', $list_labels, $list);
+    file_put_contents($this->view_path.'manager/'.$this->model_plural.'/index.php', $list);
+
   }
 
   protected function build_form($options)
