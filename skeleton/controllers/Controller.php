@@ -7,7 +7,7 @@ class Controller_Manager_{model_u_plural} extends Controller_Manager_Application
 
     $this->template->title .= ' - {plural}';
     if(!Auth::instance()->logged_in('admin') && $this->request->action() != 'profile'){
-      $this->request->redirect('manager/dashboard');
+      $this->redirect('manager/dashboard');
     }
   }
   
