@@ -1,5 +1,20 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
+/**
+ * Users generator task
+ * 
+ * It requires the follow params:
+ *  - method: method to execute (currently 'add' only)
+ *  - name: user full name
+ *  - username: user username
+ *  - email: user email
+ *  - password: user password (min. 8 chars)
+ *  - role: user role (admin|manager)
+ *
+ * @package    Tripl Manager
+ * @author     Henrique Boaventura
+ * @license    http://kohanaframework.org/license
+ */
 class Task_Admin_Users extends Minion_Task {
 
   protected $_options = array(

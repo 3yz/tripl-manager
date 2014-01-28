@@ -1,5 +1,15 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
+/**
+ * Database generator task
+ * 
+ * It requires the follow params:
+ *  - method: method to execute (currently 'generate' only)
+ *
+ * @package    Tripl Manager
+ * @author     Henrique Boaventura
+ * @license    http://kohanaframework.org/license
+ */
 class Task_Admin_Database extends Minion_Task {
 
   protected $_options = array(

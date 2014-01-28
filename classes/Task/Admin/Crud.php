@@ -16,6 +16,10 @@
  *  - list_fields: Fields to add to the generated list
  *    Ex: --list_fields='id, title' //must be comma separeted   
  *    Default value: 'id'
+ *
+ * @package    Tripl Manager
+ * @author     Henrique Boaventura
+ * @license    http://kohanaframework.org/license
  */
 class Task_Admin_Crud extends Minion_Task {
 
